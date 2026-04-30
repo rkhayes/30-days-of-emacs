@@ -1,0 +1,18 @@
+#+TITLE: 30 Days of Emacs
+I've been using Emacs for a long time, more from costume that anything else. I don't have a super optimized workflow within it, or packages and scripts I developed myself that greatly improve my performance on daily tasks nor I centralize anything I need in Emacs. But recently I've came across this though "why I ain't doing this?", it has been my development environment for almost all my carrer as a programmer. I've been using it since I was eighteen. So I decided to dive deep in the internals and see for myself what value it can provide. The most important step I will take during this time is to actively study Lisp and write Emacs Lisp.
+
+Some things I would like to try with are:
+- Integration with frontier LLM models for agentic development
+- Optimizations for data science and machine learning development workflow
+- Streamlined processes for research and writing
+- Migrating tasks from external applications to Emacs
+- Deep diving into the most powerful packages and modes
+- UI/UX improvements for the editor
+
+* [[file:01.el][01: First Steps on Emacs Lisp]]
+- State Mutation: Used ~setq~ to permanently modify editor state (e.g., ~inhibit-startup-screen~) and evaluated S-expressions interactively using ~C-x C-e~ (~eval-last-sexp~).
+- Custom Commands: Created interactive functions using ~defun~ and ~(interactive)~ to bridge Lisp code with the editor's UI and internal help system.
+- Buffer Manipulation: Utilized built-in functions to query and modify buffer contents, including ~point-min~, ~point-max~, ~goto-char~, ~insert~, and ~buffer-substring-no-properties~ for extracting raw text suitable for external APIs.
+- Variable Scoping: Leveraged the ~let~ macro to isolate temporary local variables and ~let*~ for sequential bindings, keeping the global namespace clean.
+- Data Structuring: Explored Lisp quasiquotation (backquotes and commas) to dynamically construct Association Lists (Alists) and convert them to API-ready payloads using ~json-encode~.
+- Network Requests: Investigated the native ~url~ library. Temporarily shadowed global variables (~url-request-method~, ~url-request-extra-headers~, ~url-request-data~) within a ~let~ block to safely execute an HTTP POST request via ~url-retrieve-synchronously~, surfacing the response with ~switch-to-buffer~.
