@@ -16,3 +16,8 @@ Some things I would like to try with are:
 - Variable Scoping: Leveraged the ~let~ macro to isolate temporary local variables and ~let*~ for sequential bindings, keeping the global namespace clean.
 - Data Structuring: Explored Lisp quasiquotation (backquotes and commas) to dynamically construct Association Lists (Alists) and convert them to API-ready payloads using ~json-encode~.
 - Network Requests: Investigated the native ~url~ library. Temporarily shadowed global variables (~url-request-method~, ~url-request-extra-headers~, ~url-request-data~) within a ~let~ block to safely execute an HTTP POST request via ~url-retrieve-synchronously~, surfacing the response with ~switch-to-buffer~.
+* [[file:02.el][02: Asynchronous Elisp & Callbacks]]
+- Asynchronous Requests: Transitioned from synchronous to non-blocking network calls using ~url-retrieve~ to keep the editor responsive.
+- Callback Functions: Implemented both named functions and anonymous ~lambda~ functions to process data only after the HTTP response arrives.
+- Buffer Context: Managed execution environments by extracting payloads from the hidden network buffer using ~url-http-end-of-headers~, then teleporting back to the working document using ~current-buffer~ and ~with-current-buffer~.
+- Lexical Scoping & Closures: Resolved void variable errors caused by Emacs's default dynamic scoping by enabling lexical binding (~-*- lexical-binding: t; -*-~), allowing async callbacks to "remember" the original buffer state.
