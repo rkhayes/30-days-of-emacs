@@ -21,3 +21,9 @@ Some things I would like to try with are:
 - Callback Functions: Implemented both named functions and anonymous ~lambda~ functions to process data only after the HTTP response arrives.
 - Buffer Context: Managed execution environments by extracting payloads from the hidden network buffer using ~url-http-end-of-headers~, then teleporting back to the working document using ~current-buffer~ and ~with-current-buffer~.
 - Lexical Scoping & Closures: Resolved void variable errors caused by Emacs's default dynamic scoping by enabling lexical binding (~-*- lexical-binding: t; -*-~), allowing async callbacks to "remember" the original buffer state.
+* [[file:03.el][03: Advanced Buffer Manipulation]]
+- Search & Control Flow: Used ~search-forward~ paired with ~if~ and ~while~ statements to conditionally navigate and iterate through buffer text.
+- Regular Expressions: Implemented ~re-search-forward~ to find multiple patterns (e.g., ~"TODO\\|FIXME"~), managing Emacs Lisp's requirement for double-escaped strings.
+- Text Replacement: Leveraged ~replace-match~ to programmatically mutate matched text during loop iterations.
+- Context Preservation: Wrapped destructive operations in the ~save-excursion~ macro to automatically restore the cursor position and prevent UI jumps.
+- Data Extraction: Utilized regex capture groups ~\\(.*\\)~ and the ~match-string~ function to isolate and extract specific substring variables from the buffer for external use.
