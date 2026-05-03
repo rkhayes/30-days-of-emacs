@@ -27,3 +27,10 @@ Some things I would like to try with are:
 - Text Replacement: Leveraged ~replace-match~ to programmatically mutate matched text during loop iterations.
 - Context Preservation: Wrapped destructive operations in the ~save-excursion~ macro to automatically restore the cursor position and prevent UI jumps.
 - Data Extraction: Utilized regex capture groups ~\\(.*\\)~ and the ~match-string~ function to isolate and extract specific substring variables from the buffer for external use.
+* [[file:04.el][04: Agentic Core & Minor Mode Packaging]]
+- Invisible Text Properties: Explored Emacs's hidden metadata system using ~put-text-property~ and ~get-text-property~ to tag specific regions of text without altering the visual document.
+- Boundary Scanning: Implemented ~next-single-property-change~ to scan a buffer and jump between invisible metadata boundaries, demonstrating how raw text is chunked into structured JSON payloads for LLM context windows.
+- Lisp Evaluation Flow: Corrected a malformed function error by utilizing the ~progn~ macro to group multiple sequential expressions inside a single ~if~ condition branch.
+- Process Filters: Designed a background streaming circuit (~mock-stream-filter~) using ~with-current-buffer~ and ~save-excursion~ to safely catch and inject real-time data chunks into a target buffer without hijacking the user's active cursor.
+- Package Architecture: Transitioned from isolated scripts to a formalized Emacs tool by defining a custom minor mode (~define-minor-mode~).
+- Keymap Management: Utilized ~make-sparse-keymap~ and ~define-key~ to isolate custom keybindings (like ~C-c c~) from the global namespace, creating a toggleable environment with a dedicated mode-line indicator (~" Agentic"~).
